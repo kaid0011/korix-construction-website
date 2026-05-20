@@ -1,6 +1,6 @@
 <template>
   <q-page class="about-page bg-white">
-    <section class="page-header text-white flex flex-center text-center q-py-xl relative-position">
+    <section class="page-header bg-dark text-white flex flex-center text-center q-py-xl relative-position">
       <div class="header-overlay"></div>
       <div class="header-content animate-fade-down relative-position z-top q-py-xl q-px-md">
         <div class="text-accent text-weight-bolder text-uppercase q-mb-md tracking-wide">Our Heritage</div>
@@ -9,15 +9,15 @@
       </div>
     </section>
 
-    <section class="main-story q-px-md q-px-md-xl q-py-xl row items-center justify-center bg-white">
+    <section class="main-story q-px-xl q-px-md-xl q-col-gutter-x-xl q-py-xl row items-center justify-center bg-white">
       <div class="col-12 col-md-5 q-pr-md-xl animate-fade-right q-mb-xl q-mb-md-none">
-        <div class="image-wrapper relative-position" style="max-width: 550px; margin: 0 auto;">
-          <div class="structural-bg-shape bg-accent structural-border"></div>
+        <div class="image-wrapper relative-position q-mx-auto" style="max-width: 500px;">
+          <div class="single-shape shape-story bg-accent"></div>
           
           <q-img 
             src="../assets/23.jpg" 
-            class="story-img structural-border shadow-10" 
-            style="height: 550px;" 
+            class="story-img top-left-img shadow-10" 
+            style="height: 520px;" 
             fit="cover" 
           />
         </div>
@@ -37,9 +37,9 @@
       </div>
     </section>
 
-    <section class="synergy-section bg-dark text-white q-py-xl q-px-md q-px-md-xl relative-position">
-      <div class="row items-center q-mx-auto q-py-xl" style="max-width: 1440px;">
-        <div class="col-12 col-md-6 q-pr-md-xl text-center text-md-left q-mb-xl q-mb-md-none">
+    <section class="synergy-section bg-dark text-white q-py-xl q-px-xl q-px-md-xl relative-position">
+      <div class="row items-center q-py-xl q-px-xl q-col-gutter-x-xl" style="max-width: 1440px;">
+        <div class="col-12 col-md q-pr-md-xl text-center text-md-left q-mb-xl q-mb-md-none">
           <div class="text-accent text-weight-bold text-uppercase q-mb-sm tracking-wide">Corporate Strength</div>
           <h2 class="text-h2 text-white text-weight-bolder q-mb-lg line-height-tight">Backed by a legacy of excellence.</h2>
           <p class="text-body1 text-grey-4 q-mb-xl text-weight-regular line-height-relaxed" style="max-width: 90%;">
@@ -54,28 +54,32 @@
           </div>
         </div>
         
-        <div class="col-12 col-md-6 flex justify-center justify-md-end">
-          <q-card flat class="profile-card bg-white q-pa-xl shadow-15">
-            <div class="text-h4 text-dark text-weight-bolder q-mb-lg">Group Expertise</div>
-            <q-list dense>
-              <q-item v-for="highlight in profileHighlights" :key="highlight" class="q-px-none q-py-sm text-dark">
-                <q-item-section avatar style="min-width: 32px; padding-right: 8px;">
-                  <q-icon name="check_circle" color="primary" size="sm" />
-                </q-item-section>
-                <q-item-section class="text-weight-bold text-body1">{{ highlight }}</q-item-section>
-              </q-item>
-            </q-list>
-            <q-btn to="/services" color="accent" text-color="dark" label="View Full Capabilities" unelevated class="btn-primary-custom full-width q-mt-xl shadow-4" />
-          </q-card>
+        <div class="col-12 col-md-auto flex justify-center justify-md-end">
+          <div class="profile-card-wrapper relative-position full-width flex justify-center justify-md-end" style="max-width: 480px;">
+            <div class="single-shape shape-profile bg-accent"></div>
+            
+            <q-card flat class="profile-card bg-white q-pa-xl shadow-2">
+              <div class="text-h4 text-dark text-weight-bolder q-mb-lg">Group Expertise</div>
+              <q-list dense>
+                <q-item v-for="highlight in profileHighlights" :key="highlight" class="q-px-none q-py-sm text-dark">
+                  <q-item-section avatar style="min-width: 32px; padding-right: 8px;">
+                    <q-icon name="fas fa-check-circle" color="primary" size="sm" />
+                  </q-item-section>
+                  <q-item-section class="text-weight-bold text-body1">{{ highlight }}</q-item-section>
+                </q-item>
+              </q-list>
+              <q-btn to="/services" color="dark" text-color="white" label="View Full Capabilities" unelevated class="btn-dark-custom full-width q-mt-xl" />
+            </q-card>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="core-values-section q-px-md q-px-md-xl q-py-xl bg-white">
+    <section class="core-values-section q-px-xl q-px-md-xl q-py-xl bg-info">
       <div class="q-mx-auto q-py-xl" style="max-width: 1440px;">
         <div class="text-center q-mb-xl">
-          <div class="section-divider bg-primary q-mx-auto q-mb-md"></div>
-          <div class="text-secondary text-weight-bold text-uppercase q-mb-sm tracking-wide">Our Principles</div>
+          <div class="section-divider bg-accent q-mx-auto q-mb-md"></div>
+          <div class="text-dark text-weight-bold text-uppercase q-mb-sm tracking-wide">Our Principles</div>
           <h2 class="text-h2 text-dark text-weight-bolder q-mb-sm line-height-tight">Core Values</h2>
           <p class="text-h6 text-grey-7 text-weight-regular">The foundational pillars that guide every project we undertake.</p>
         </div>
@@ -88,44 +92,55 @@
             :style="{ animationDelay: `${index * 0.15}s` }"
           >
             <q-card flat class="core-value-card full-height q-pa-xl bg-white shadow-2">
+              <div class="watermark text-grey-2 text-weight-bolder">{{ '0' + (index + 1) }}</div>
+              
               <div class="cv-icon-wrapper bg-info flex flex-center q-mb-lg shadow-1">
                 <q-icon :name="cv.icon" size="xl" color="primary" class="cv-icon" />
               </div>
-              <h3 class="text-h5 text-dark text-weight-bolder q-mb-md">{{ cv.title }}</h3>
-              <p class="text-body1 text-grey-8 text-weight-medium line-height-relaxed">{{ cv.desc }}</p>
+              <h3 class="text-h5 text-dark text-weight-bolder q-mb-md relative-position z-top">{{ cv.title }}</h3>
+              <p class="text-body1 text-grey-8 text-weight-medium line-height-relaxed relative-position z-top">{{ cv.desc }}</p>
             </q-card>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="mission-vision q-px-md q-px-md-xl q-py-xl bg-info">
-      <div class="row q-col-gutter-xl justify-center q-py-xl" style="max-width: 1200px; margin: 0 auto;">
-        
-        <div class="col-12 col-md-6 card-stagger" style="animation-delay: 0.2s;">
-          <q-card class="modern-card full-height q-pa-xl text-center bg-white shadow-3">
-            <div class="icon-wrapper bg-dark q-mx-auto q-mb-lg flex flex-center" style="width: 70px; height: 70px; border-radius: 16px 0 16px 0;">
-              <q-icon name="flag" size="xl" color="accent" />
-            </div>
-            <div class="text-h3 text-dark text-weight-bolder q-mb-md">Our Mission</div>
-            <q-separator color="primary" class="q-mx-auto q-mb-lg" style="width: 50px; height: 3px; border-radius: 2px;" />
-            <p class="text-body1 text-grey-8 line-height-relaxed text-weight-medium">{{ mission }}</p>
-          </q-card>
-        </div>
-
-        <div class="col-12 col-md-6 card-stagger" style="animation-delay: 0.4s;">
-          <q-card class="modern-card full-height q-pa-xl text-center bg-white shadow-3">
-            <div class="icon-wrapper bg-dark q-mx-auto q-mb-lg flex flex-center" style="width: 70px; height: 70px; border-radius: 16px 0 16px 0;">
-              <q-icon name="visibility" size="xl" color="accent" />
-            </div>
-            <div class="text-h3 text-dark text-weight-bolder q-mb-md">Our Vision</div>
-            <q-separator color="primary" class="q-mx-auto q-mb-lg" style="width: 50px; height: 3px; border-radius: 2px;" />
-            <p class="text-body1 text-grey-8 line-height-relaxed text-weight-medium">{{ vision }}</p>
-          </q-card>
-        </div>
-        
+   <section class="strategic-section q-px-xl q-px-md-xl q-py-xl bg-grey-1">
+  <div class="q-mx-auto q-py-xl" style="max-width: 1440px;">
+    
+    <div class="row q-col-gutter-lg justify-center">
+      <div class="col-12 col-md-4 card-stagger" style="animation-delay: 0.2s;">
+        <q-card flat class="strategic-card full-height q-pa-xl text-center ">
+          <div class="icon-wrapper q-mx-auto q-mb-lg flex flex-center">
+            <q-icon name="fas fa-flag" size="md" color="white" />
+          </div>
+          <div class="text-h5 text-dark text-weight-bolder q-mb-md">Our Mission</div>
+          <p class="text-body1 text-grey-8 line-height-relaxed">{{ mission }}</p>
+        </q-card>
       </div>
-    </section>
+
+      <div class="col-12 col-md-4 card-stagger" style="animation-delay: 0.3s;">
+        <q-card flat class="strategic-card full-height q-pa-xl text-center">
+          <div class="icon-wrapper q-mx-auto q-mb-lg flex flex-center">
+            <q-icon name="fas fa-eye" size="md" color="white" />
+          </div>
+          <div class="text-h5 text-dark text-weight-bolder q-mb-md">Our Vision</div>
+          <p class="text-body1 text-grey-8 line-height-relaxed">{{ vision }}</p>
+        </q-card>
+      </div>
+
+      <div class="col-12 col-md-4 card-stagger" style="animation-delay: 0.4s;">
+        <q-card flat class="strategic-card full-height q-pa-xl text-center">
+          <div class="icon-wrapper q-mx-auto q-mb-lg flex flex-center">
+            <q-icon name="fas fa-bullseye" size="md" color="white" />
+          </div>
+          <div class="text-h5 text-dark text-weight-bolder q-mb-md">Our Goal</div>
+          <p class="text-body1 text-grey-8 line-height-relaxed">{{ goal }}</p>
+        </q-card>
+      </div>
+    </div>
+  </div>
+</section>
   </q-page>
 </template>
 
@@ -141,44 +156,104 @@
 /* Hero Header */
 .page-header {
   min-height: 380px;
-  background: url('https://images.unsplash.com/photo-1541888081622-c36399066468?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') center/cover fixed;
 }
-.header-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(49, 69, 68, 0.98) 0%, rgba(83, 128, 84, 0.9) 100%); }
+.header-overlay { position: absolute; inset: 0; background: rgba(5, 78, 39, 0.88); }
 
 /* Main Story & Image Framework */
 .image-wrapper { z-index: 1; }
-.structural-border { border-radius: 40px 0 40px 0; }
-.structural-bg-shape { position: absolute; top: -20px; left: -20px; width: 100%; height: 100%; z-index: -1; }
 .text-content p { font-size: 1.1rem; }
+.story-img { width: 100%; transition: transform 0.3s ease; }
+.image-wrapper:hover .story-img { transform: translateY(-6px); }
 
 /* Synergy Profile Section */
-.synergy-section { border-top: 8px solid var(--q-primary); }
+.synergy-section { border-top: 8px solid var(--q-dark); }
+.profile-card-wrapper { z-index: 1; }
 .profile-card {
   width: 100%;
-  max-width: 450px;
   border-radius: 0 40px 0 40px;
-  border-left: 6px solid var(--q-accent);
 }
 
-/* Core Values UI Section */
+/* UNIFIED 1-TO-1 BACKGROUND GEOMETRIC SHAPES */
+.single-shape {
+  position: absolute;
+  z-index: -1;
+}
+.shape-story {
+  top: -12px;
+  left: -12px;
+  width: 100%;
+  height: 100%;
+  border-radius: 40px 0 0 0;
+}
+.shape-profile {
+  bottom: -12px;
+  right: -12px;
+  width: 100%;
+  height: 100%;
+  border-radius: 0 40px 0 40px;
+}
+
+/* Base Image Radiuses */
+.top-left-img { border-radius: 40px 0 0 0; }
+
+/* --- UPGRADED CORE VALUES UI --- */
 .core-values-section { border-top: 2px dashed rgba(49, 69, 68, 0.1); }
 .core-value-card {
+  position: relative;
+  overflow: hidden;
   border-radius: 24px 0 24px 0;
   border: 1px solid rgba(49, 69, 68, 0.08);
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 1;
 }
+
+/* Watermark Number Styling */
+.watermark {
+  position: absolute;
+  bottom: -20px;
+  right: -5px;
+  font-size: 140px;
+  line-height: 1;
+  z-index: 0;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  pointer-events: none;
+}
+
+/* Animated Bottom Border */
+.core-value-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 6px;
+  background-color: var(--q-primary);
+  transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 2;
+}
+
 .cv-icon-wrapper {
   width: 70px;
   height: 70px;
   border-radius: 16px 0 16px 0;
   transition: all 0.4s ease;
+  position: relative;
+  z-index: 2;
 }
 .cv-icon { transition: all 0.3s ease; }
+
 /* Core Value Hover Interactions */
 .core-value-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(49, 69, 68, 0.1) !important;
-  border-color: var(--q-primary);
+  box-shadow: 0 24px 48px rgba(49, 69, 68, 0.08) !important;
+  border-color: transparent;
+}
+.core-value-card:hover::after {
+  width: 100%; /* Line draws across the bottom */
+}
+.core-value-card:hover .watermark {
+  color: rgba(49, 69, 68, 0.06); /* Number darkens slightly */
+  transform: translateY(-10px) scale(1.05);
 }
 .core-value-card:hover .cv-icon-wrapper {
   background-color: var(--q-primary) !important;
@@ -186,7 +261,7 @@
 }
 .core-value-card:hover .cv-icon {
   color: white !important;
-  transform: scale(1.1);
+  transform: scale(1.1) rotate(-8deg); /* Kinetic tilt */
 }
 
 /* Mission/Vision Cards */
@@ -200,19 +275,62 @@
   box-shadow: 0 24px 48px rgba(49, 69, 68, 0.12) !important; 
 }
 
-/* Buttons */
-.btn-primary-custom { 
-  border-radius: 8px; 
-  padding: 12px 0;
-  font-weight: 800; 
-  letter-spacing: 1px; 
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
+/* Buttons styling */
+.btn-dark-custom { 
+  border-radius: 4px; 
+  padding: 12px 24px; 
+  font-weight: bold; 
+  border: 1px solid var(--q-dark); 
+  transition: all 0.3s; 
 }
-.btn-primary-custom:hover { 
-  background-color: #e6b85c !important; 
+.btn-dark-custom:hover { 
   transform: translateY(-3px); 
+  background-color: var(--q-primary) !important; 
+  border-color: var(--q-primary); 
+  color: white !important;
+}
+/* --- STRATEGIC INTENT SECTION --- */
+.strategic-card {
+  border-radius: 30px 0 30px 0;
+  border: 1px solid rgba(49, 69, 68, 0.2);
+  transition: all 0.4s ease;
+  background: white;
+  position: relative;
+  overflow: hidden;
 }
 
+.strategic-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05) !important;
+  border-color: var(--q-primary);
+}
+
+.strategic-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--q-primary);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.strategic-card:hover::before { transform: scaleX(1); }
+
+.icon-wrapper {
+  width: 60px;
+  height: 60px;
+  background: var(--q-dark);
+  border-radius: 15px 0 15px 0;
+  transition: all 0.3s ease;
+}
+
+.strategic-card:hover .icon-wrapper {
+  background: var(--q-primary);
+  transform: rotate(5deg);
+}
 /* Animations */
 .animate-fade-down { animation: fadeInDown 1s cubic-bezier(0.25, 0.8, 0.25, 1) forwards; }
 .animate-fade-right { animation: fadeInRight 1s cubic-bezier(0.25, 0.8, 0.25, 1) forwards; opacity: 0; }
@@ -224,27 +342,30 @@
 @keyframes fadeInLeft { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
 @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
+@media (max-width: 1024px) {
+  .single-shape { display: none; } 
+  .story-img { height: 380px !important; }
+}
+
 @media (max-width: 600px) {
-  .structural-border { border-radius: 24px 0 24px 0; }
+  .top-left-img { border-radius: 24px 0 24px 0; }
   .profile-card { border-radius: 0 24px 0 24px; }
   .core-value-card { border-radius: 16px 0 16px 0; }
   .modern-card { border-radius: 16px 0 16px 0; }
 }
 </style>
-<script setup>
-// --- ORIGINAL DATA PRESERVED ---
-const paragraphs = [
-  "We are a trusted construction and office fit-out company specializing in workplace renovation, interior improvements, and customized furniture solutions for modern businesses.",
-  "With a commitment to quality craftsmanship and professional service, we help companies transform ordinary spaces into functional, efficient, and inspiring work environments. From planning and design to construction and furniture installation, we provide complete turnkey solutions tailored to the unique needs of every client.",
-  "Our team combines industry expertise, innovative ideas, and attention to detail to deliver projects on time and within budget.",
-  "Whether it's a corporate office, commercial space, meeting room, or collaborative workspace, we focus on creating environments that enhance productivity, reflect brand identity, and support business growth. We believe that every workspace should be built with quality, functionality, and long-term value in mind."
-];
 
+<script setup>
+const paragraphs = [
+"Korix Construction specializes in high-quality workplace renovations, interior fit-outs, and custom furniture solutions. We provide end-to-end turnkey services—from initial planning and design to final installation—tailored to your business needs.",
+"Combining industry expertise with a commitment to precision, we transform ordinary spaces into functional, inspiring environments that enhance productivity and reflect your brand identity. We deliver projects on time and within budget, building workspaces designed for long-term value and growth."  
+];
+// Add this to your constants
+const goal = "To consistently deliver high-performance workspaces that balance aesthetic appeal with operational efficiency, ensuring every client project contributes to long-term business success.";
 const mission = "To provide complete construction, office fit renovation, and furniture solutions that combine quality workmanship, innovative design, and dependable service to create productive and modern business spaces.";
 
 const vision = "To be trusted industry leader in transforming workspaces through innovative construction solutions, modern interiors, and outstanding customer experience.";
 
-// --- NEW DATA ADDED FOR PROFILE SYNERGY ---
 const companyStats = [
   { label: "Combined Projects", value: "350+" },
   { label: "Years Experience", value: "15+" },
@@ -259,7 +380,6 @@ const profileHighlights = [
   "Dedicated long-term facility maintenance teams"
 ];
 
-// --- NEW DATA FOR CORE VALUES UI ---
 const coreValues = [
   { 
     icon: 'verified', 

@@ -12,7 +12,7 @@
       </div>
     </section>
 
-    <section class="services-grid-section q-py-xl q-px-md q-px-md-xl bg-white">
+    <section class="services-grid-section q-py-xl q-px-xl q-px-md-xl bg-white">
       <div class="q-mx-auto" style="max-width: 1440px;">
         <div class="row q-col-gutter-xl">
           <div 
@@ -33,11 +33,11 @@
                   <div class="card-accent-tag bg-accent"></div>
                 </div>
 
-                <q-card-section class="q-pa-xl pb-none">
+              <q-card-section class="q-pa-xl pb-none relative-position">
                   <div class="text-h4 text-dark text-weight-bolder q-mb-sm line-height-tight">{{ s.title }}</div>
                   <p class="text-body1 text-grey-7 q-mb-lg text-weight-medium desc-height-lock">{{ s.desc }}</p>
                   
-                  <q-separator class="q-mb-lg" color="grey-2" style="height: 2px;" />
+                  <q-separator class="q-mb-md" color="grey-2" style="height: 2px;" />
                 </q-card-section>
               </div>
 
@@ -57,7 +57,7 @@
       </div>
     </section>
 
-    <section class="products-section bg-info q-py-xl q-px-md q-px-md-xl">
+    <section class="products-section bg-info q-py-xl q-px-xl q-px-md-xl">
       <div class="q-mx-auto q-py-lg" style="max-width: 1440px;">
         <div class="text-center q-mb-xl">
           <div class="section-divider bg-dark q-mx-auto q-mb-md"></div>
@@ -115,12 +115,12 @@
   min-height: 350px;
   background: url('https://images.unsplash.com/photo-1541888081622-c36399066468?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') center/cover fixed;
 }
-.header-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(49, 69, 68, 0.96) 0%, rgba(83, 128, 84, 0.9) 100%); }
+.header-overlay { position: absolute; inset: 0; background: #054e27; }
 
 /* Main Services Cards (Equal Height Architecture Framework) */
 .service-architecture-card {
   border-radius: 24px 0 24px 0;
-  border: 1px solid rgba(49, 69, 68, 0.05);
+  border: 1px solid rgba(49, 69, 68, 0.2);
   overflow: hidden;
   transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
@@ -147,11 +147,30 @@
 .service-architecture-card:hover .card-accent-tag { width: 100%; }
 
 /* Service Lists Framework */
-.service-list-item { transition: transform 0.2s ease; }
-.list-arrow-icon { transform: translateX(-5px); opacity: 0; transition: all 0.2s ease; }
-.service-list-item:hover { transform: translateX(5px); }
-.service-list-item:hover .list-arrow-icon { transform: translateX(0); opacity: 1; }
-
+/* Service Lists Framework */
+.service-list-item { 
+  transition: all 0.3s ease; 
+  border: 1px solid transparent;
+  margin-bottom: 4px;
+}
+.list-arrow-icon { 
+  opacity: 0.5; 
+  transition: all 0.3s ease; 
+}
+.service-list-item:hover { 
+  transform: translateX(6px); 
+  background-color: var(--q-primary) !important;
+  border-color: var(--q-primary);
+  box-shadow: 0 4px 12px rgba(5, 78, 39, 0.15);
+}
+.service-list-item:hover .text-grey-9 {
+  color: white !important;
+}
+.service-list-item:hover .list-arrow-icon { 
+  opacity: 1;
+  color: var(--q-accent) !important;
+  transform: translateX(3px); 
+}
 /* Structural Products Display Elements */
 .product-structural-card {
   border-radius: 0 24px 0 24px;

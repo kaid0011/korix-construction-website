@@ -38,27 +38,42 @@
       </div>
     </section>
 
-    <section class="about-preview q-px-md q-px-md-xl q-py-xl row items-center bg-info">
+    <section class="about-preview q-px-xl q-px-md-xl q-py-xl row items-center bg-info">
       <div class="row q-col-gutter-xl items-center q-mx-auto" style="max-width: 1440px; width: 100%;">
         
-        <div class="col-12 col-md-6 q-pr-md-xl position-relative q-mb-xl q-mb-md-none text-center">
-          <div class="image-grid-container relative-position q-mx-auto">
-            <div class="row q-col-gutter-sm">
-              <div class="col-6">
-                <q-img src="../assets/6.jpg" class="grid-img top-left-img shadow-6" />
+        <div class="col-12 col-md-6 q-pr-md-xl q-mb-xl q-mb-md-none text-center">
+          
+          <div class="image-grid-container relative-position q-mx-auto q-ml-md-auto q-mr-md-xl">
+            <div class="row q-col-gutter-md">
+              
+              <div class="col-6 staggered-col-left">
+                
+                <div class="relative-position q-mb-md img-wrapper">
+                  <div class="single-shape shape-tl bg-accent"></div>
+                  <q-img src="../assets/6.jpg" ratio="0.8" fit="cover" class="grid-img top-left-img" />
+                </div>
+                
+                <div class="relative-position img-wrapper">
+                  <div class="single-shape shape-bl bg-dark" style="opacity: 0.8;"></div>
+                  <q-img src="../assets/27.jpg" ratio="0.8" fit="cover" class="grid-img bottom-left-img" />
+                </div>
+                
               </div>
-              <div class="col-6">
-                <q-img src="../assets/5.jpg" class="grid-img top-right-img shadow-6" />
+              
+              <div class="col-6 staggered-col-right">
+                
+                <div class="relative-position q-mb-md img-wrapper">
+                  <div class="single-shape shape-tr bg-dark" style="opacity: 0.8;"></div>
+                  <q-img src="../assets/5.jpg" ratio="0.8" fit="cover" class="grid-img top-right-img" />
+                </div>
+                
+                <div class="relative-position img-wrapper">
+                  <div class="single-shape shape-br bg-accent"></div>
+                  <q-img src="../assets/11.jpg" ratio="0.8" fit="cover" class="grid-img bottom-right-img" />
+                </div>
+                
               </div>
-              <div class="col-6">
-                <q-img src="../assets/27.jpg" class="grid-img bottom-left-img shadow-6" />
-              </div>
-              <div class="col-6">
-                <q-img src="../assets/11.jpg" class="grid-img bottom-right-img shadow-6" />
-              </div>
-            </div>
-            <div class="grid-center-accent bg-accent shadow-6 flex flex-center">
-              <div class="inner-accent bg-white"></div>
+
             </div>
           </div>
         </div>
@@ -78,7 +93,7 @@
       </div>
     </section>
 
-    <section class="features-ribbon bg-white q-py-xl q-px-md q-px-md-xl">
+    <section class="features-ribbon bg-white q-py-xl q-px-xl q-px-md-xl">
       <div class="q-mx-auto" style="max-width: 1440px;">
         <div class="row items-center justify-between q-mb-xl">
           <div>
@@ -143,7 +158,7 @@
         <div class="col-12 col-md-6 flex justify-center justify-md-end q-mt-xl q-mt-md-none">
           <div class="ocular-image-container relative-position">
             <div class="ocular-bg-shape bg-primary"></div>
-            <q-img src="../assets/11.jpg" class="ocular-img shadow-10" fit="cover" />
+            <q-img src="../assets/11.jpg" class="ocular-img" fit="cover" />
           </div>
         </div>
       </div>
@@ -206,29 +221,47 @@
 }
 .border-accent { border-color: var(--q-accent) !important; }
 
-/* About Preview Grid */
-.image-grid-container { max-width: 450px; z-index: 1; }
-.grid-img { height: 220px; width: 100%; transition: transform 0.3s ease; }
-.grid-img:hover { transform: scale(1.02); }
-.top-left-img { border-radius: 40px 0 40px 0; }
-.top-right-img { border-radius: 0 40px 0 40px; }
-.bottom-left-img { border-radius: 0 40px 0 40px; }
-.bottom-right-img { border-radius: 40px 0 40px 0; }
-.grid-center-accent {
+/* Architectural Staggered Grid */
+.image-grid-container { 
+  width: 100%; 
+  max-width: 550px; 
+  z-index: 1; 
+}
+.grid-img { 
+  width: 100%; 
+  border-radius: 8px; 
+  transition: transform 0.3s ease; 
+  height: 250px;
+}
+.img-wrapper { z-index: 1; }
+.img-wrapper:hover .grid-img { 
+  transform: translateY(-6px); 
+}
+
+/* Creating the offset flow */
+.staggered-col-left { transform: translateY(-20px); }
+.staggered-col-right { transform: translateY(20px); }
+
+/* Outer border radiuses to match your layout styles */
+.top-left-img { border-radius: 40px 0 0 0; }
+.top-right-img { border-radius: 0 40px 0 0; }
+.bottom-left-img { border-radius: 0 0 0 40px; }
+.bottom-right-img { border-radius: 0 0 40px 0; }
+
+/* 1-to-1 Image Background Shapes */
+.single-shape {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(45deg);
-  width: 50px;
-  height: 50px;
-  border-radius: 12px;
-  z-index: 2;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
-.inner-accent {
-  width: 20px;
-  height: 20px;
-  border-radius: 4px;
-}
+
+/* Specific Offsets and Radiuses for each image */
+.shape-tl { top: -12px; left: -12px; border-radius: 40px 0 0 0; } /* Top Left offset */
+.shape-bl { bottom: -12px; left: -12px; border-radius: 0 0 0 40px; } /* Bottom Left offset */
+.shape-tr { top: -12px; right: -12px; border-radius: 0 40px 0 0; } /* Top Right offset */
+.shape-br { bottom: -12px; right: -12px; border-radius: 0 0 40px 0; } /* Bottom Right offset */
+
 
 /* Core Values UI Elements */
 .feature-card { 
@@ -250,10 +283,10 @@
 .feature-card:hover .cv-icon-element { color: white !important; transform: scale(1.1); }
 .feature-card:hover .discover-btn { transform: translateX(4px); }
 
-/* Ocular Inspection Layout (Matching Reference) */
+/* Ocular Inspection Layout */
 .ocular-section { border-top: 2px dashed rgba(49, 69, 68, 0.1); }
 .ocular-image-container { width: 100%; max-width: 500px; height: 450px; z-index: 1; }
-.ocular-bg-shape { position: absolute; bottom: -20px; left: -20px; width: 100%; height: 100%; border-radius: 0 40px 0 40px; z-index: -1; opacity: 0.15; }
+.ocular-bg-shape { position: absolute; bottom: -20px; left: -20px; width: 100%; height: 100%; border-radius: 0 40px 0 40px; z-index: -1; opacity: 0.8; }
 .ocular-img { height: 100%; width: 100%; border-radius: 0 40px 0 40px; }
 
 /* CTA Banner */
@@ -277,11 +310,11 @@
   .cta-blob-container { height: 300px; margin-top: 2rem; }
   .grid-img { height: 180px; }
   .ocular-image-container { height: 350px; margin-top: 2rem; }
+  .single-shape { display: none; } /* Removes the decorative shapes on mobile to keep the layout clean */
 }
 </style>
 
 <script setup>
-// Dynamic array supplying the refactored Core Values grid
 const coreValues = [
   { 
     icon: 'verified', 
@@ -303,4 +336,5 @@ const coreValues = [
     title: 'Innovative Solutions', 
     desc: 'Embracing smart construction techniques and modern space efficiency planning.' 
   }
-];</script>
+];
+</script>
