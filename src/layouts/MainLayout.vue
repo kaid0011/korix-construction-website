@@ -101,7 +101,7 @@
     </q-drawer>
 
     <q-page-container :class="[$route.meta.ctaBg || 'bg-white', 'relative-position']">
-      <router-view />
+      <router-view class="pages"/>
 
       <div class="quote-cta-wrapper font-jakarta q-px-md">
         <div class="floating-cta-card bg-white shadow-5 q-pa-lg q-pa-md-xl text-center">
@@ -190,15 +190,15 @@
           </div>
         </div>
 
-        <div class="footer-copyright bg-black text-grey-6 q-py-md text-center border-top-structural">
+        <div class="footer-copyright bg-black text-grey-6 q-py-md border-top-structural">
           <div class="row justify-between items-center q-px-md q-px-md-xl q-mx-auto" style="max-width: 1440px;">
-            <div class="text-body2 text-weight-medium text-left-md text-center">
+            <div class="text-body2 text-weight-medium">
               &copy; {{ new Date().getFullYear() }} <span class="text-white font-weight-bold">Korix Construction</span>. All Rights Reserved. 
               <span class="q-mx-xs text-grey-8">|</span> 
               Developed by <a href="https://www.kaidtech.com" target="_blank" class="credit-link text-weight-bold">KAIDTECH</a>
             </div>
             
-            <div class="text-caption text-grey-7 text-weight-bold q-mt-xs q-mt-sm-none tracking-wide text-uppercase">
+            <div class="text-caption text-grey-7 text-weight-bold tracking-wide text-uppercase">
               Built Quality. Delivering Trust.
             </div>
             
@@ -395,6 +395,10 @@
   .link-column { text-align: center; }
   .custom-footer-link:hover { transform: none; }
   .contact-row-fix { justify-content: center; }
+}
+
+.pages {
+  z-index: 0;
 }
 </style>
 

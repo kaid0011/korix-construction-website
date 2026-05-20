@@ -4,18 +4,18 @@
       <div class="header-overlay"></div>
       <div class="header-content animate-fade-down relative-position z-top q-py-xl q-px-md">
         <div class="text-accent text-weight-bolder text-uppercase q-mb-md tracking-wide">Contact Us</div>
-        <h1 class="text-h1 text-weight-bolder q-mb-none line-height-tight">Get In Touch</h1>
+        <h1 class="text-h1 text-weight-bolder q-mb-none line-height-tight responsive-h1">Get In Touch</h1>
         <div class="section-divider bg-accent q-mx-auto q-mt-lg"></div>
       </div>
     </section>
 
-    <section class="contact-content q-px-xl q-px-md-xl q-py-xl">
+    <section class="contact-content q-px-md q-px-md-xl q-py-xl">
       <div class="row q-col-gutter-xl justify-between q-py-lg" style="max-width: 1400px; margin: 0 auto;">
         
         <div class="col-12 col-md-5 animate-fade-right">
           <div class="q-pr-md-lg">
             <div class="text-accent text-weight-bold text-uppercase q-mb-sm tracking-wide">Contact Details</div>
-            <h2 class="text-h2 text-dark text-weight-bolder q-mb-md line-height-tight">
+            <h2 class="text-h2 text-dark text-weight-bolder q-mb-md line-height-tight responsive-h2">
               We are here to <span class="text-secondary">help you build.</span>
             </h2>
             <p class="text-body1 text-grey-8 q-mb-xl text-weight-medium" style="max-width: 90%;">
@@ -159,11 +159,24 @@
 @keyframes fadeInRight { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
 @keyframes fadeInLeft { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
 
+/* --- RESPONSIVE MEDIA QUERIES --- */
 @media (max-width: 1024px) {
   .contact-content { padding-top: 2rem !important; padding-bottom: 2rem !important; }
   .map-wrapper {
     position: relative;
     height: 400px;
+  }
+}
+
+@media (max-width: 599px) {
+  /* Dynamic Typography */
+  .responsive-h1 { font-size: 2.5rem !important; line-height: 1.15 !important; }
+  .responsive-h2 { font-size: 2rem !important; line-height: 1.25 !important; }
+  
+  /* Reduce map height so it doesn't take up the entire screen on mobile */
+  .map-wrapper {
+    height: 300px;
+    min-height: 300px;
   }
 }
 </style>
