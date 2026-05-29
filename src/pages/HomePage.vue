@@ -132,46 +132,48 @@
     </section>
 
     <!-- ===================== CLIENTS ===================== -->
-    <section class="clients-section bg-white q-py-xl q-px-md q-px-sm-lg q-px-xl-xl">
-      <div class="q-mx-auto" style="max-width: 1440px;">
+    <section class="clients-section bg-white q-py-xl">
 
-        <div class="text-center q-mb-xl">
-          <div class="section-divider bg-accent q-mx-auto q-mb-md"></div>
-          <div class="text-primary text-weight-bold text-uppercase q-mb-sm tracking-wide">Our Clients</div>
-          <h2 class="section-title text-dark text-weight-bolder q-mb-sm">Trusted By Industry Leaders</h2>
-          <p class="text-grey-6 text-body1">Organizations that rely on Korix Construction for their workspace needs.</p>
+      <div class="text-center q-mb-lg q-px-md">
+        <div class="section-divider bg-accent q-mx-auto q-mb-md"></div>
+        <div class="text-primary text-weight-bold text-uppercase q-mb-sm tracking-wide">Our Clients</div>
+        <h2 class="section-title text-dark text-weight-bolder q-mb-none">Trusted By Industry Leaders</h2>
+      </div>
+
+      <div class="marquee-container">
+        <div class="marquee-fade-left"></div>
+        <div class="marquee-fade-right"></div>
+
+        <!-- Row 1 — scrolls left -->
+        <div class="marquee-row q-mb-md">
+          <div class="marquee-track track-left">
+            <div
+              v-for="(client, i) in [...clientsRow1, ...clientsRow1]"
+              :key="'r1-' + i"
+              class="marquee-item"
+              :title="client.name"
+            >
+              <img v-if="client.logo" :src="client.logo" :alt="client.name" class="marquee-logo" />
+              <div v-else class="marquee-badge flex flex-center">
+                <span class="text-weight-bolder text-white">{{ client.initial }}</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="row q-col-gutter-lg justify-center">
-          <div
-            v-for="client in clients"
-            :key="client.name"
-            class="col-6 col-sm-4 col-md-3"
-          >
-            <div class="client-card flex column flex-center text-center q-pa-lg">
-
-              <!-- Logo clients -->
-              <template v-if="client.logo">
-                <div class="client-logo-wrapper flex flex-center">
-                  <q-img
-                    :src="client.logo"
-                    :alt="client.name"
-                    fit="contain"
-                    class="client-logo"
-                    no-spinner
-                  />
-                </div>
-                <div class="client-label text-grey-6 text-weight-bold q-mt-md">{{ client.name }}</div>
-              </template>
-
-              <!-- Text fallback clients -->
-              <template v-else>
-                <div class="client-initial-badge flex flex-center q-mx-auto">
-                  <span class="text-weight-bolder text-white">{{ client.initial }}</span>
-                </div>
-                <div class="client-label text-grey-7 text-weight-bold q-mt-md">{{ client.name }}</div>
-              </template>
-
+        <!-- Row 2 — scrolls right -->
+        <div class="marquee-row">
+          <div class="marquee-track track-right">
+            <div
+              v-for="(client, i) in [...clientsRow2, ...clientsRow2]"
+              :key="'r2-' + i"
+              class="marquee-item"
+              :title="client.name"
+            >
+              <img v-if="client.logo" :src="client.logo" :alt="client.name" class="marquee-logo" />
+              <div v-else class="marquee-badge flex flex-center">
+                <span class="text-weight-bolder text-white">{{ client.initial }}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -378,57 +380,84 @@
 .feature-card:hover .discover-btn      { transform: translateX(4px); }
 
 /* ============================================================
-   CLIENTS SECTION
+   CLIENTS SECTION — MARQUEE
    ============================================================ */
 .clients-section { border-top: 4px solid var(--q-dark); }
 
-.client-card {
-  border: 1px solid rgba(49, 69, 68, 0.1);
-  border-radius: 16px 0 16px 0;
-  min-height: 160px;
-  background: #fff;
-  transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
-  cursor: default;
-}
-.client-card:hover {
-  border-color: var(--q-primary);
-  box-shadow: 0 16px 40px rgba(49, 69, 68, 0.1);
-  transform: translateY(-6px);
+.marquee-container {
+  position: relative;
+  overflow: hidden;
+  padding: 8px 0;
 }
 
-.client-logo-wrapper {
-  height: 72px;
-  width: 100%;
+.marquee-fade-left,
+.marquee-fade-right {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
 }
-.client-logo {
-  max-width: 140px;
-  height: 72px;
+.marquee-fade-left  { left: 0;  background: linear-gradient(to right, #fff 30%, transparent); }
+.marquee-fade-right { right: 0; background: linear-gradient(to left,  #fff 30%, transparent); }
+
+.marquee-row { overflow: hidden; }
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 12px;
+}
+.track-left  { animation: marquee-left  35s linear infinite; }
+.track-right { animation: marquee-right 35s linear infinite; }
+
+.marquee-track:hover { animation-play-state: paused; }
+
+@keyframes marquee-left  { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes marquee-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+.marquee-item {
+  flex-shrink: 0;
+  width: 160px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid rgba(49, 69, 68, 0.08);
+  border-radius: 12px 0 12px 0;
+  padding: 12px 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+.marquee-item:hover {
+  border-color: var(--q-primary);
+  box-shadow: 0 8px 24px rgba(49, 69, 68, 0.08);
+}
+
+.marquee-logo {
+  max-width: 120px;
+  max-height: 52px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
   filter: grayscale(100%) opacity(0.55);
-  transition: filter 0.35s ease;
+  transition: filter 0.3s ease;
 }
-.client-card:hover .client-logo {
+.marquee-item:hover .marquee-logo {
   filter: grayscale(0%) opacity(1);
 }
 
-.client-initial-badge {
-  width: 68px;
-  height: 68px;
-  border-radius: 16px 0 16px 0;
+.marquee-badge {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px 0 10px 0;
   background: var(--q-dark);
-  transition: background 0.35s ease, border-radius 0.35s ease;
-  font-size: 1.1rem;
-  letter-spacing: 1px;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  transition: background 0.3s ease;
 }
-.client-card:hover .client-initial-badge {
-  background: var(--q-primary);
-  border-radius: 0 16px 0 16px;
-}
-
-.client-label {
-  font-size: 0.78rem;
-  letter-spacing: 0.4px;
-  line-height: 1.3;
-}
+.marquee-item:hover .marquee-badge { background: var(--q-primary); }
 
 /* ============================================================
    OCULAR SECTION
@@ -547,25 +576,53 @@
 </style>
 
 <script setup>
-import logoToyota     from '../assets/clients/toyota.png';
-import logoAyala      from '../assets/clients/ayala.png';
-import logoMetroNorth from '../assets/clients/MNMCH.png';
-import logoJT         from '../assets/clients/jt-express.png';
-import logoRockwell   from '../assets/clients/rockwell-primaries.png';
-import logoPCG        from '../assets/clients/philippine-coast-guard.png';
-import logoISU        from '../assets/clients/isabelastateu.png';
-import logoStaClara   from '../assets/clients/sta-clara.png';
+import { computed } from 'vue';
+import logoToyota      from '../assets/clients/toyota.png';
+import logoAyala       from '../assets/clients/ayala.png';
+import logoMetroNorth  from '../assets/clients/MNMCH.png';
+import logoJT          from '../assets/clients/jt-express.png';
+import logoRockwell    from '../assets/clients/rockwell-primaries.png';
+import logoPCG         from '../assets/clients/philippine-coast-guard.png';
+import logoISU         from '../assets/clients/isabelastateu.png';
+import logoStaClara    from '../assets/clients/sta-clara.png';
+import logoDAR         from '../assets/clients/dar.png';
+import logoDSWD        from '../assets/clients/dswd.png';
+import logoRamiro      from '../assets/clients/ramiro.png';
+import logoCLSU        from '../assets/clients/clsu.jpg';
+import logoTarlac      from '../assets/clients/tarlac.png';
+import logoNorfil      from '../assets/clients/norfil.png';
+import logoMikada      from '../assets/clients/mikada.jpg';
+import logoEmsen       from '../assets/clients/emsen.jpg';
+import logoEfren       from '../assets/clients/efren.jpg';
+import logoDepEd       from '../assets/clients/deped.png';
+import logoBFP         from '../assets/clients/bfp.png';
+import logoPNP         from '../assets/clients/pnp.png';
 
 const clients = [
-  { name: 'Toyota',                   logo: logoToyota,   initial: 'T'   },
-  { name: 'Ayala Foundation',         logo: logoAyala,    initial: 'AF'  },
-  { name: 'Metro North',              logo: logoMetroNorth, initial: 'MN'  },
-  { name: 'J&T Express',              logo: logoJT,       initial: 'JT'  },
-  { name: 'Rockwell Primaries',       logo: logoRockwell, initial: 'RP'  },
-  { name: 'Philippine Coast Guard',   logo: logoPCG,      initial: 'PCG' },
-  { name: 'Isabela State University', logo: logoISU,      initial: 'ISU' },
-  { name: 'Sta. Clara International', logo: logoStaClara, initial: 'SC'  },
+  { name: 'Toyota',                          logo: logoToyota,     initial: 'T'     },
+  { name: 'Ayala Foundation',                logo: logoAyala,      initial: 'AF'    },
+  { name: 'Metro North',                     logo: logoMetroNorth, initial: 'MN'    },
+  { name: 'J&T Express',                     logo: logoJT,         initial: 'JT'    },
+  { name: 'Rockwell Primaries',              logo: logoRockwell,   initial: 'RP'    },
+  { name: 'Philippine Coast Guard',          logo: logoPCG,        initial: 'PCG'   },
+  { name: 'Isabela State University',        logo: logoISU,        initial: 'ISU'   },
+  { name: 'Sta. Clara International',        logo: logoStaClara,   initial: 'SC'    },
+  { name: 'Department of Agrarian Reform',   logo: logoDAR,    initial: 'DAR'   },
+  { name: 'DSWD - Region IV',               logo: logoDSWD,   initial: 'DSWD'  },
+  { name: 'Luther Z. Ramiro Medical Center',logo: logoRamiro, initial: 'LZRMC' },
+  { name: 'Central Luzon State University', logo: logoCLSU,   initial: 'CLSU'  },
+  { name: 'Tarlac Agricultural University', logo: logoTarlac, initial: 'TAU'   },
+  { name: 'Norfil Foundation Inc.',         logo: logoNorfil, initial: 'NFI'   },
+  { name: 'Mikada Construction',            logo: logoMikada, initial: 'MC'    },
+  { name: 'Emsen Corporation',              logo: logoEmsen,  initial: 'EC'    },
+  { name: 'Efren Ramirez Construction Corp',logo: logoEfren,  initial: 'ERCC'  },
+  { name: 'DEPED MAIN',                     logo: logoDepEd,  initial: 'DepEd' },
+  { name: 'BFP',                            logo: logoBFP,    initial: 'BFP'   },
+  { name: 'PNP',                            logo: logoPNP,    initial: 'PNP'   },
 ];
+
+const clientsRow1 = computed(() => clients.filter((_, i) => i % 2 === 0));
+const clientsRow2 = computed(() => clients.filter((_, i) => i % 2 === 1));
 
 const coreValues = [
   {
