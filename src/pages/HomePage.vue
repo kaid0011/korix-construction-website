@@ -28,7 +28,7 @@
           <div class="hero-image-container relative-position">
             <div class="hero-bg-shape bg-accent rounded-borders-custom"></div>
             <q-img
-              src="../assets/4.jpg"
+              src="../assets/images/4.jpg"
               class="hero-img rounded-borders-custom shadow-10"
               fit="cover"
             />
@@ -53,21 +53,21 @@
               <div class="col-6 staggered-col-left">
                 <div class="relative-position q-mb-md img-wrapper">
                   <div class="single-shape shape-tl bg-accent"></div>
-                  <q-img src="../assets/6.jpg" ratio="0.8" fit="cover" class="grid-img top-left-img" />
+                  <q-img src="../assets/images/6.jpg" ratio="0.8" fit="cover" class="grid-img top-left-img" />
                 </div>
                 <div class="relative-position img-wrapper">
                   <div class="single-shape shape-bl bg-dark" style="opacity: 0.8;"></div>
-                  <q-img src="../assets/27.jpg" ratio="0.8" fit="cover" class="grid-img bottom-left-img" />
+                  <q-img src="../assets/images/27.jpg" ratio="0.8" fit="cover" class="grid-img bottom-left-img" />
                 </div>
               </div>
               <div class="col-6 staggered-col-right">
                 <div class="relative-position q-mb-md img-wrapper">
                   <div class="single-shape shape-tr bg-dark" style="opacity: 0.8;"></div>
-                  <q-img src="../assets/5.jpg" ratio="0.8" fit="cover" class="grid-img top-right-img" />
+                  <q-img src="../assets/images/5.jpg" ratio="0.8" fit="cover" class="grid-img top-right-img" />
                 </div>
                 <div class="relative-position img-wrapper">
                   <div class="single-shape shape-br bg-accent"></div>
-                  <q-img src="../assets/11.jpg" ratio="0.8" fit="cover" class="grid-img bottom-right-img" />
+                  <q-img src="../assets/images/11.jpg" ratio="0.8" fit="cover" class="grid-img bottom-right-img" />
                 </div>
               </div>
             </div>
@@ -131,6 +131,54 @@
       </div>
     </section>
 
+    <!-- ===================== CLIENTS ===================== -->
+    <section class="clients-section bg-white q-py-xl q-px-md q-px-sm-lg q-px-xl-xl">
+      <div class="q-mx-auto" style="max-width: 1440px;">
+
+        <div class="text-center q-mb-xl">
+          <div class="section-divider bg-accent q-mx-auto q-mb-md"></div>
+          <div class="text-primary text-weight-bold text-uppercase q-mb-sm tracking-wide">Our Clients</div>
+          <h2 class="section-title text-dark text-weight-bolder q-mb-sm">Trusted By Industry Leaders</h2>
+          <p class="text-grey-6 text-body1">Organizations that rely on Korix Construction for their workspace needs.</p>
+        </div>
+
+        <div class="row q-col-gutter-lg justify-center">
+          <div
+            v-for="client in clients"
+            :key="client.name"
+            class="col-6 col-sm-4 col-md-3"
+          >
+            <div class="client-card flex column flex-center text-center q-pa-lg">
+
+              <!-- Logo clients -->
+              <template v-if="client.logo">
+                <div class="client-logo-wrapper flex flex-center">
+                  <q-img
+                    :src="client.logo"
+                    :alt="client.name"
+                    fit="contain"
+                    class="client-logo"
+                    no-spinner
+                  />
+                </div>
+                <div class="client-label text-grey-6 text-weight-bold q-mt-md">{{ client.name }}</div>
+              </template>
+
+              <!-- Text fallback clients -->
+              <template v-else>
+                <div class="client-initial-badge flex flex-center q-mx-auto">
+                  <span class="text-weight-bolder text-white">{{ client.initial }}</span>
+                </div>
+                <div class="client-label text-grey-7 text-weight-bold q-mt-md">{{ client.name }}</div>
+              </template>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <!-- ===================== OCULAR INSPECTION ===================== -->
     <section class="ocular-section bg-info q-py-xl q-px-md q-px-sm-lg q-px-xl-xl">
       <div class="row items-center q-mx-auto q-py-lg" style="max-width: 1440px;">
@@ -176,7 +224,7 @@
         <div class="col-12 col-md-6 flex justify-center justify-md-end q-mt-xl q-mt-md-none">
           <div class="ocular-image-container relative-position">
             <div class="ocular-bg-shape bg-primary"></div>
-            <q-img src="../assets/11.jpg" class="ocular-img" fit="cover" />
+            <q-img src="../assets/images/11.jpg" class="ocular-img" fit="cover" />
           </div>
         </div>
 
@@ -203,7 +251,7 @@
         <div class="col-12 col-md-5 relative-position flex justify-center">
           <div class="cta-blob-container relative-position">
             <div class="cta-blob-bg bg-accent"></div>
-            <q-img src="../assets/22.jpg" class="cta-img shadow-10" fit="cover" />
+            <q-img src="../assets/images/22.jpg" class="cta-img shadow-10" fit="cover" />
           </div>
         </div>
 
@@ -330,6 +378,59 @@
 .feature-card:hover .discover-btn      { transform: translateX(4px); }
 
 /* ============================================================
+   CLIENTS SECTION
+   ============================================================ */
+.clients-section { border-top: 4px solid var(--q-dark); }
+
+.client-card {
+  border: 1px solid rgba(49, 69, 68, 0.1);
+  border-radius: 16px 0 16px 0;
+  min-height: 160px;
+  background: #fff;
+  transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: default;
+}
+.client-card:hover {
+  border-color: var(--q-primary);
+  box-shadow: 0 16px 40px rgba(49, 69, 68, 0.1);
+  transform: translateY(-6px);
+}
+
+.client-logo-wrapper {
+  height: 72px;
+  width: 100%;
+}
+.client-logo {
+  max-width: 140px;
+  height: 72px;
+  filter: grayscale(100%) opacity(0.55);
+  transition: filter 0.35s ease;
+}
+.client-card:hover .client-logo {
+  filter: grayscale(0%) opacity(1);
+}
+
+.client-initial-badge {
+  width: 68px;
+  height: 68px;
+  border-radius: 16px 0 16px 0;
+  background: var(--q-dark);
+  transition: background 0.35s ease, border-radius 0.35s ease;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+.client-card:hover .client-initial-badge {
+  background: var(--q-primary);
+  border-radius: 0 16px 0 16px;
+}
+
+.client-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.4px;
+  line-height: 1.3;
+}
+
+/* ============================================================
    OCULAR SECTION
    ============================================================ */
 .ocular-section { border-top: 2px dashed rgba(49, 69, 68, 0.1); }
@@ -446,6 +547,26 @@
 </style>
 
 <script setup>
+import logoToyota     from '../assets/clients/toyota.png';
+import logoAyala      from '../assets/clients/ayala.png';
+import logoMetroNorth from '../assets/clients/MNMCH.png';
+import logoJT         from '../assets/clients/jt-express.png';
+import logoRockwell   from '../assets/clients/rockwell-primaries.png';
+import logoPCG        from '../assets/clients/philippine-coast-guard.png';
+import logoISU        from '../assets/clients/isabelastateu.png';
+import logoStaClara   from '../assets/clients/sta-clara.png';
+
+const clients = [
+  { name: 'Toyota',                   logo: logoToyota,   initial: 'T'   },
+  { name: 'Ayala Foundation',         logo: logoAyala,    initial: 'AF'  },
+  { name: 'Metro North',              logo: logoMetroNorth, initial: 'MN'  },
+  { name: 'J&T Express',              logo: logoJT,       initial: 'JT'  },
+  { name: 'Rockwell Primaries',       logo: logoRockwell, initial: 'RP'  },
+  { name: 'Philippine Coast Guard',   logo: logoPCG,      initial: 'PCG' },
+  { name: 'Isabela State University', logo: logoISU,      initial: 'ISU' },
+  { name: 'Sta. Clara International', logo: logoStaClara, initial: 'SC'  },
+];
+
 const coreValues = [
   {
     icon: 'verified',

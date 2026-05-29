@@ -15,7 +15,7 @@
           <div class="single-shape shape-story bg-accent"></div>
           
           <q-img 
-            src="../assets/23.jpg" 
+            src="../assets/images/23.jpg"
             class="story-img top-left-img shadow-10" 
             style="height: 520px;" 
             fit="cover" 
@@ -43,7 +43,7 @@
           <div class="text-accent text-weight-bold text-uppercase q-mb-sm tracking-wide">Corporate Strength</div>
           <h2 class="text-h2 text-white text-weight-bolder q-mb-lg line-height-tight responsive-h2">Backed by a legacy of excellence.</h2>
           <p class="text-body1 text-grey-4 q-mb-xl text-weight-regular line-height-relaxed q-mx-auto q-mx-md-none" style="max-width: 90%;">
-            Operating in tandem with our sister company, we leverage expanded resources, deep industry expertise, and a wider network of material sourcing to handle projects of any scale and complexity with uncompromising standards.
+            Operating in tandem with our sister company, <strong>Korix Furniture</strong>, we leverage expanded resources, deep industry expertise, and a wider network of material sourcing to handle projects of any scale and complexity with uncompromising standards.
           </p>
 
           <div class="row q-col-gutter-lg justify-center justify-md-start">
@@ -69,6 +69,53 @@
                 </q-item>
               </q-list>
               <q-btn to="/services" color="dark" text-color="white" label="View Full Capabilities" unelevated class="btn-dark-custom full-width q-mt-xl" />
+            </q-card>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="team-section q-px-md q-px-md-xl q-py-xl bg-grey-1">
+      <div class="q-mx-auto q-py-xl" style="max-width: 1440px;">
+        <div class="text-center q-mb-xl">
+          <div class="section-divider bg-accent q-mx-auto q-mb-md"></div>
+          <div class="text-dark text-weight-bold text-uppercase q-mb-sm tracking-wide">The People Behind The Work</div>
+          <h2 class="text-h2 text-dark text-weight-bolder q-mb-sm line-height-tight responsive-h2">Meet Our Team</h2>
+          <p class="text-h6 text-grey-7 text-weight-regular responsive-subtitle">Dedicated professionals committed to delivering excellence on every project.</p>
+        </div>
+
+        <div class="text-dark text-weight-bold text-uppercase q-mb-lg tracking-wide text-center">Leadership</div>
+        <div class="row q-col-gutter-xl justify-center q-mb-xl">
+          <div
+            v-for="(member, index) in leadershipTeam"
+            :key="member.name"
+            class="col-12 col-sm-6 col-md-4 card-stagger"
+            :style="{ animationDelay: `${index * 0.15}s` }"
+          >
+            <q-card flat class="team-card full-height q-pa-lg text-center bg-white shadow-2">
+              <div class="team-avatar-wrapper bg-dark flex flex-center q-mx-auto q-mb-lg">
+                <q-icon :name="member.icon" size="xl" color="accent" />
+              </div>
+              <div class="text-h6 text-dark text-weight-bolder q-mb-xs">{{ member.name }}</div>
+              <div class="text-caption text-primary text-weight-bold text-uppercase tracking-wide">{{ member.role }}</div>
+            </q-card>
+          </div>
+        </div>
+
+        <div class="text-dark text-weight-bold text-uppercase q-mb-lg tracking-wide text-center">Sales Team</div>
+        <div class="row q-col-gutter-xl justify-center">
+          <div
+            v-for="(member, index) in salesTeam"
+            :key="member.name"
+            class="col-12 col-sm-6 col-md-4 card-stagger"
+            :style="{ animationDelay: `${index * 0.15}s` }"
+          >
+            <q-card flat class="team-card full-height q-pa-lg text-center bg-white shadow-2">
+              <div class="team-avatar-wrapper bg-primary flex flex-center q-mx-auto q-mb-lg">
+                <q-icon :name="member.icon" size="xl" color="white" />
+              </div>
+              <div class="text-h6 text-dark text-weight-bolder q-mb-xs">{{ member.name }}</div>
+              <div class="text-caption text-primary text-weight-bold text-uppercase tracking-wide">{{ member.role }}</div>
             </q-card>
           </div>
         </div>
@@ -264,6 +311,27 @@
   transform: scale(1.1) rotate(-8deg); 
 }
 
+/* Team Section */
+.team-card {
+  border-radius: 24px 0 24px 0;
+  border: 1px solid rgba(49, 69, 68, 0.08);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 48px rgba(49, 69, 68, 0.1) !important;
+  border-color: var(--q-primary);
+}
+.team-avatar-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px 0 20px 0;
+  transition: border-radius 0.4s ease;
+}
+.team-card:hover .team-avatar-wrapper {
+  border-radius: 0 20px 0 20px;
+}
+
 /* Mission/Vision Cards */
 .modern-card { 
   border: none; 
@@ -376,7 +444,7 @@
 </style>
 <script setup>
 const paragraphs = [
-"Korix Construction specializes in high-quality workplace renovations, interior fit-outs, and custom furniture solutions. We provide end-to-end turnkey services—from initial planning and design to final installation—tailored to your business needs.",
+"Korix Construction specializes in high-quality workplace renovations, interior fit-outs, and custom furniture solutions. In partnership with our sister company, Korix Furniture, we provide end-to-end turnkey services—from initial planning and design to final installation—tailored to your business needs.",
 "Combining industry expertise with a commitment to precision, we transform ordinary spaces into functional, inspiring environments that enhance productivity and reflect your brand identity. We deliver projects on time and within budget, building workspaces designed for long-term value and growth."  
 ];
 // Add this to your constants
@@ -397,6 +465,18 @@ const profileHighlights = [
   "In-house specialized engineering and fabrication",
   "Rigorous corporate safety & compliance standards",
   "Dedicated long-term facility maintenance teams"
+];
+
+const leadershipTeam = [
+  { name: 'Mr. Rico Lattao', role: 'President / General Manager', icon: 'business_center' },
+  { name: 'Mrs. Mylene Lattao', role: 'Finance Manager', icon: 'account_balance' },
+  { name: 'Engr. Benjamin J. Acuña', role: 'Civil Engineer', icon: 'engineering' }
+];
+
+const salesTeam = [
+  { name: 'Ms. June Ramirez', role: 'Sales Manager', icon: 'leaderboard' },
+  { name: 'Carl Casipit', role: 'Senior Construction', icon: 'construction' },
+  { name: 'Vincent Rafael Delos Santos', role: 'Technical Sales Representative', icon: 'support_agent' }
 ];
 
 const coreValues = [
