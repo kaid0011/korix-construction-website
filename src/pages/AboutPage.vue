@@ -84,7 +84,7 @@
           <p class="text-h6 text-grey-7 text-weight-regular responsive-subtitle">Dedicated professionals committed to delivering excellence on every project.</p>
         </div>
 
-        <div class="text-dark text-weight-bold text-uppercase q-mb-lg tracking-wide text-center">Leadership</div>
+        <!-- <div class="text-dark text-weight-bold text-uppercase q-mb-lg tracking-wide text-center">Leadership</div> -->
         <div class="row q-col-gutter-xl justify-center q-mb-xl">
           <div
             v-for="(member, index) in leadershipTeam"
@@ -102,23 +102,6 @@
           </div>
         </div>
 
-        <div class="text-dark text-weight-bold text-uppercase q-mb-lg tracking-wide text-center">Sales Team</div>
-        <div class="row q-col-gutter-xl justify-center">
-          <div
-            v-for="(member, index) in salesTeam"
-            :key="member.name"
-            class="col-12 col-sm-6 col-md-4 card-stagger"
-            :style="{ animationDelay: `${index * 0.15}s` }"
-          >
-            <q-card flat class="team-card full-height q-pa-lg text-center bg-white shadow-2">
-              <div class="team-avatar-wrapper bg-primary flex flex-center q-mx-auto q-mb-lg">
-                <q-icon :name="member.icon" size="xl" color="white" />
-              </div>
-              <div class="text-h6 text-dark text-weight-bolder q-mb-xs">{{ member.name }}</div>
-              <div class="text-caption text-primary text-weight-bold text-uppercase tracking-wide">{{ member.role }}</div>
-            </q-card>
-          </div>
-        </div>
       </div>
     </section>
 
