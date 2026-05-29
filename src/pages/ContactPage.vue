@@ -42,8 +42,8 @@
                     <q-icon name="fas fa-mobile-alt" size="sm" />
                   </div>
                   <div>
-                    <div class="text-h6 text-weight-bolder text-dark q-mb-xs line-height-tight">Phone Number</div>
-                    <div class="text-body2 text-grey-7">{{ contact.phone }}</div>
+                    <div class="text-h6 text-weight-bolder text-dark q-mb-xs line-height-tight">Sales Team</div>
+                    <div v-for="num in contact.phones" :key="num" class="text-body2 text-grey-7">{{ num }}</div>
                   </div>
                 </div>
               </div>
@@ -56,22 +56,10 @@
                   <div>
                     <div class="text-h6 text-weight-bolder text-dark q-mb-xs line-height-tight">Email Address</div>
                     <div class="text-body2 text-grey-7">{{ contact.email }}</div>
-                    <div class="text-body2 text-grey-7">{{ contact.email2 }}</div>
                   </div>
                 </div>
               </div>
 
-              <div class="col-12 col-sm-6">
-                <div class="flex no-wrap">
-                  <div class="icon-outline-box text-accent q-mr-md flex flex-center">
-                    <q-icon name="far fa-user" size="sm" />
-                  </div>
-                  <div>
-                    <div class="text-h6 text-weight-bolder text-dark q-mb-xs line-height-tight">{{ contact.name }}</div>
-                    <div class="text-body2 text-grey-7">{{ contact.role }}</div>
-                  </div>
-                </div>
-              </div>
 
             </div>
           </div>
@@ -185,11 +173,12 @@
 import { ref } from 'vue';
 
 const contact = {
-  name: "Ms. June Ramirez",
-  role: "Sales Manager",
-  phone: "0924.2485491",
-  email: "junekorix@gmail.com",
-  email2: "saleskorix@gmail.com",
+  phones: [
+    "0924 248 5491",
+    "0994 676 2106",
+    "0975 054 0394"
+  ],
+  email: "saleskorix@gmail.com",
   address: "#78 Susano Rd, San Agustin, Novaliches, Quezon City, 1123"
 };
 

@@ -6,7 +6,7 @@
         <div class="row q-gutter-md items-center text-caption text-weight-medium tracking-wide">
           <div class="row items-center q-gutter-xs">
             <q-icon name="fas fa-mobile-alt q-mr-xs" color="accent" size="xs" />
-            <span>{{ contactDetails.phone }}</span>
+            <span>{{ contactDetails.phones[0] }}</span>
           </div>
           <div class="row items-center q-gutter-xs">
             <q-icon name="far fa-envelope q-mr-xs" color="accent" size="xs" />
@@ -176,9 +176,11 @@
                   <q-icon name="fas fa-map-marker-alt" color="accent" size="xs" class="q-mr-sm q-mt-xs shrink-zero" />
                   <span class="text-body2 text-grey-4 text-weight-medium line-height-base">{{ contactDetails.address }}</span>
                 </div>
-                <div class="row no-wrap items-center contact-row-fix">
-                  <q-icon name="fas fa-phone-alt" color="accent" size="xs" class="q-mr-sm shrink-zero" />
-                  <span class="text-body2 text-grey-4 text-weight-medium">{{ contactDetails.phone }}</span>
+                <div class="row no-wrap items-start contact-row-fix">
+                  <q-icon name="fas fa-phone-alt" color="accent" size="xs" class="q-mr-sm shrink-zero q-mt-xs" />
+                  <div class="column q-gutter-y-xs">
+                    <span v-for="num in contactDetails.phones" :key="num" class="text-body2 text-grey-4 text-weight-medium">{{ num }}</span>
+                  </div>
                 </div>
                 <div class="row no-wrap items-center contact-row-fix">
                   <q-icon name="fas fa-envelope" color="accent" size="xs" class="q-mr-sm shrink-zero" />
@@ -412,8 +414,8 @@ function toggleLeftDrawer() {
 }
 
 const contactDetails = {
-  phone: "09242485491",
-  email: "junekorix@gmail.com",
+  phones: ["0924 248 5491", "0994 676 2106", "0975 054 0394"],
+  email: "saleskorix@gmail.com",
   address: "#78 Susano Rd, San Agustin, Novaliches, Quezon City, 1123"
 }
 </script>
